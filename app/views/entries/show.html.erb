@@ -1,0 +1,26 @@
+<script>
+$(document).ready(function(){
+   $('.materialboxed').materialbox();
+ });
+</script>
+<div>
+<h1><%= @entry.title %></h1>
+<p> <%= @entry.story %> </p>
+
+<% if @pictures.any? %>
+<div class='row'>
+
+  <% @pictures.each do |picture| %>
+  <div class=''>
+
+    <img class="materialboxed"  data-caption=<%= picture.caption %> height="250" src=<%= picture.image.url(:full) %>>
+    <!-- <%=image_tag picture.image.url(:full) %> -->
+    <!-- <%= picture.caption %> -->
+    </div>
+  <% end %>
+
+</div>
+<% elsif %>
+  <h4> no images </h4>
+<% end %>
+<p><%= link_to 'New image', new_picture_path(entry_id: @entry.id) %></p>

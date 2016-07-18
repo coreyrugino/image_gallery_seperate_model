@@ -1,0 +1,19 @@
+<h1 class='center blue orange-text'>Entries:</h1>
+<% if @entries.any? %>
+  <% @entries.each do |entry| %>
+    <ul>
+      <hr/>
+      <h3 class='brown darken-1 pink-text text-lighten-2'>TITLE: <%= entry.title %></h3>
+      <p> STORY:<%= entry.story %>
+      <br/>
+
+      <%= link_to 'Show entry', entry_path(entry) %> |
+      <%= link_to 'Edit entry', edit_entry_path(entry) %> |
+      <%= link_to 'Destroy entry', entry_path(entry), method: :delete %>
+    </ul>
+  <% end %>
+<% else %>
+<h3> No entries found </h3>
+<% end %>
+<hr/>
+<p><%= link_to 'New entry', new_entry_path %></p>
